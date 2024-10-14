@@ -54,109 +54,63 @@ public:
     // constructor
     DoublyLinkedList() { head = nullptr; tail = nullptr; }
 
-    void push_back(int value) {
+    void push_back(Goat value) {
         Node* newNode = new Node(value);
-        if (!tail)  // if there's no tail, the list is empty
+        if (!tail) { // Empty list
             head = tail = newNode;
-        else {
+        } else {
             tail->next = newNode;
             newNode->prev = tail;
             tail = newNode;
         }
     }
 
-    void push_front(int value) {
+    void push_front(Goat value) {
         Node* newNode = new Node(value);
-        if (!head)  // if there's no head, the list is empty
+        if (!head) { // Empty list
             head = tail = newNode;
-        else {
+        } else {
             newNode->next = head;
             head->prev = newNode;
             head = newNode;
         }
     }
 
-    void insert_after(int value, int position) {
-        if (position < 0) {
-            cout << "Position must be >= 0." << endl;
-            return;
-        }
-
-        Node* newNode = new Node(value);
-        if (!head) {
-            head = tail = newNode;
-            return;
-        }
-
-        Node* temp = head;
-        for (int i = 0; i < position && temp; ++i)
-            temp = temp->next;
-
-        if (!temp) {
-            cout << "Position exceeds list size. Node not inserted.\n";
-            delete newNode;
-            return;
-        }
-
-        newNode->next = temp->next;
-        newNode->prev = temp;
-        if (temp->next)
-            temp->next->prev = newNode;
-        else
-            tail = newNode; // Inserting at the end
-        temp->next = newNode;
-    }
-
-    void delete_node(int value) {
-        if (!head) return; // Empty list
-
-        Node* temp = head;
-        while (temp && temp->data != value)
-            temp = temp->next;
-
-        if (!temp) return; // Value not found
-
-        if (temp->prev) {
-            temp->prev->next = temp->next;
-        } else {
-            head = temp->next; // Deleting the head
-        }
-
-        if (temp->next) {
-            temp->next->prev = temp->prev;
-        } else {
-            tail = temp->prev; // Deleting the tail
-        }
-
-        delete temp;
-    }
-
     void print() {
         Node* current = head;
-        if (!current) return;
+        if (!current) {
+            cout << "List is empty" << endl;
+            return;
+        }
         while (current) {
-            cout << current->data << " ";
+            cout << current->data << endl;
             current = current->next;
         }
         cout << endl;
     }
 
+    // Print reverse method
     void print_reverse() {
         Node* current = tail;
-        if (!current) return;
+        if (!current) {
+            cout << "List is empty" << endl;
+            return;
+        }
         while (current) {
-            cout << current->data << " ";
+            cout << current->data << endl;
             current = current->prev;
         }
         cout << endl;
     }
 
+    // Destructor
     ~DoublyLinkedList() {
         while (head) {
             Node* temp = head;
             head = head->next;
             delete temp;
         }
+        head = tail = nullptr;
     }
 };
 
