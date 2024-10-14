@@ -5,7 +5,20 @@
 
 using namespace std;
 
-const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;
+class Goat {
+private:
+    int age;
+    string name;
+    string color;
+    string names[15] = {"Senior", "Godlike", "Old", "Mature", "Teen", "Kid", "Ancient", "Elder", "Youth", "Youngster", "Adult", "Veteran", "Master", "Grandmaster", "Legend"};
+    string colors[15] = {"White", "Black", "Brown", "Grey", "Spotted", "Gold", "Red", "Blue", "Green", "Yellow", "Pink", "Purple", "Orange", "Silver", "Mauve"};
+
+public:
+    // Default constructor
+    Goat() {
+        age = rand() % 20 + 1; // Random age between 1 and 20
+        name = names[rand() % 15];
+        color = colors[rand(
 
 class DoublyLinkedList {
 private:
