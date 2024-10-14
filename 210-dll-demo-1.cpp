@@ -1,4 +1,8 @@
 #include <iostream>
+#include <string>
+#include <cstdlib>
+#include <ctime>
+
 using namespace std;
 
 const int MIN_NR = 10, MAX_NR = 99, MIN_LS = 5, MAX_LS = 20;
@@ -131,21 +135,28 @@ public:
 
 // Driver program
 int main() {
-    DoublyLinkedList list;
-    int size = rand() % (MAX_LS-MIN_LS+1) + MIN_LS;
+    srand(time(0)); 
 
-    for (int i = 0; i < size; ++i)
-        list.push_back(rand() % (MAX_NR-MIN_NR+1) + MIN_NR);
-    cout << "List forward: ";
+    DoublyLinkedList list;
+    int size = rand() % (20 - 5 + 1) + 5; // Random between 5 and 20
+
+    for (int i = 0; i < size; ++i) {
+        Goat goat; 
+        list.push_back(goat);
+    }
+
+    cout << "Forward: " << endl;
     list.print();
 
-    cout << "List backward: ";
+    cout << "Backward: " << endl;
     list.print_reverse();
 
-    cout << "Deleting list, then trying to print.\n";
+    cout << "Deleting list, then trying to print." << endl;
     list.~DoublyLinkedList();
+
     cout << "List forward: ";
     list.print();
+
 
     return 0;
 }
