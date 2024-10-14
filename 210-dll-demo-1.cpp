@@ -18,19 +18,33 @@ public:
     Goat() {
         age = rand() % 20 + 1; // Random age between 1 and 20
         name = names[rand() % 15];
-        color = colors[rand(
+        color = colors[rand() % 15];
+    }
+    // Parameterized constructor
+    Goat(int a, string n, string c) : age(a), name(n), color(c) {}
+
+    int getAge() const { return age; }
+    string getName() const { return name; }
+    string getColor() const { return color; }
+
+    void setAge(int a) { age = a; }
+    void setName(string n) { name = n; }
+    void setColor(string c) { color = c; }
+
+    friend ostream& operator<<(ostream& os, const Goat& goat) {
+        os << goat.name << " (" << goat.color << ", " << goat.age << ")";
+        return os;
+    }
+};
+
 
 class DoublyLinkedList {
 private:
     struct Node {
-        int data;
+        Goat data;
         Node* prev;
         Node* next;
-        Node(int val, Node* p = nullptr, Node* n = nullptr) {
-            data = val; 
-            prev = p;
-            next = n;
-        }
+        Node(Goat val, Node* p = nullptr, Node* n = nullptr) : data(val), prev(p), next(n) {}
     };
 
     Node* head;
