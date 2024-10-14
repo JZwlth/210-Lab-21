@@ -1,3 +1,4 @@
+// COMSC-210 | Lab 21 | Zhaoyi Zheng
 #include <iostream>
 #include <string>
 #include <cstdlib>
@@ -116,13 +117,13 @@ public:
 
 // Driver program
 int main() {
-    srand(time(0)); 
+    srand(time(0)); // Randomize the random number generator
 
     DoublyLinkedList list;
     int size = rand() % (20 - 5 + 1) + 5; // Random between 5 and 20
 
     for (int i = 0; i < size; ++i) {
-        Goat goat; 
+        Goat goat; // Create a Goat object 
         list.push_back(goat);
     }
 
@@ -137,7 +138,6 @@ int main() {
 
     cout << "List forward: ";
     list.print();
-
 
     return 0;
 }
